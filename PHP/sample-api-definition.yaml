@@ -1,0 +1,89 @@
+{
+    "metadata": {
+        "kind": "ApiDefinition",
+        "apiVersion": "database/v1",
+        "name": "sample"
+    },
+    "spec": {
+        "resources": {
+            "main": {
+                "mapping": "_customer",
+                "type": "customerDb"
+            }
+        },
+        "schema": {
+            "properties": {
+                "id": {
+                    "x-synergy-type": "synergyId",
+                    "x-synergy-mapping": "_synergyId"
+                },
+                "mailAddress": {
+                    "x-synergy-type": "mailAddress",
+                    "x-synergy-mapping": "_mailAddress"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "integer"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "birthDay": {
+                    "type": "string",
+                    "format": "month-day"
+                },
+                "visitDate": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "password": {
+                    "x-synergy-type": "password",
+                    "x-synergy-mapping": "password"
+                },
+                "singleSelect": {
+                    "x-synergy-type": "singleSelect",
+                    "x-synergy-select-value-definitions": [
+                        {
+                            "value": 1,
+                            "label": "選択肢１",
+                            "hasExtraText": false
+                        },
+                        {
+                            "value": 2,
+                            "label": "選択肢２",
+                            "hasExtraText": true
+                        },
+                        {
+                            "value": 3,
+                            "label": "選択肢３",
+                            "hasExtraText": false
+                        }
+                    ]
+                },
+                "multipleSelect": {
+                    "x-synergy-type": "multipleSelect",
+                    "x-synergy-select-value-definitions": [
+                        {
+                            "value": 1,
+                            "label": "選択肢１",
+                            "hasExtraText": false
+                        },
+                        {
+                            "value": 2,
+                            "label": "選択肢２",
+                            "hasExtraText": true
+                        },
+                        {
+                            "value": 3,
+                            "label": "選択肢３",
+                            "hasExtraText": false
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
