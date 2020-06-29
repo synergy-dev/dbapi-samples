@@ -1,0 +1,549 @@
+openapi: 3.0.1
+info:
+  title: sampleApi
+  description: sampleApi
+  version: ckb69uof6000i01-20588697624xpal4dl
+servers:
+  - url: 'https://st-db.paas.crmstyle.com'
+    description: ステージング環境
+security:
+  - oauth:
+      - 'db:record:execute'
+  - bearer: []
+tags:
+  - name: sample
+paths:
+  '/apis/record.database/v1/accounts/{accountCode}/sample/records':
+    post:
+      tags:
+        - sample
+      description: sample 登録
+      operationId: createSample
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sample'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+    parameters:
+      - $ref: '#/components/parameters/accountCode'
+  '/apis/record.database/v1/accounts/{accountCode}/sample/query':
+    post:
+      tags:
+        - sample
+      description: sample 検索
+      operationId: querySample
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sample_QueryRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample_QueryResponse'
+    parameters:
+      - $ref: '#/components/parameters/accountCode'
+  '/apis/record.database/v1/accounts/{accountCode}/sample/count':
+    post:
+      tags:
+        - sample
+      description: sample カウント
+      operationId: countSample
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sample_CountRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample_CountResponse'
+    parameters:
+      - $ref: '#/components/parameters/accountCode'
+  '/apis/record.database/v1/accounts/{accountCode}/sample/records/{id}':
+    get:
+      tags:
+        - sample
+      description: sample 取得
+      operationId: getSample
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+        '404':
+          description: NOT FOUND
+    delete:
+      tags:
+        - sample
+      description: sample 削除
+      operationId: deleteSample
+      responses:
+        '204':
+          description: OK
+        '404':
+          description: NOT FOUND
+    patch:
+      tags:
+        - sample
+      description: sample 更新
+      operationId: patchSample
+      parameters:
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sample'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sample'
+        '404':
+          description: NOT FOUND
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/accountCode'
+components:
+  schemas:
+    Sample:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+        birthDay:
+          type: string
+          format: month-day
+        password:
+          type: string
+        multipleSelect:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                minimum: 1
+                type: integer
+                format: int32
+              extraText:
+                type: string
+        name:
+          type: string
+        mailAddress:
+          type: string
+          format: email
+        visitDate:
+          type: string
+          format: date
+        id:
+          type: integer
+        age:
+          type: number
+        singleSelect:
+          type: object
+          properties:
+            value:
+              minimum: 1
+              type: integer
+              format: int32
+            extraText:
+              type: string
+    Sample_Filter:
+      type: object
+      properties:
+        AND:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/Sample_Filter'
+        OR:
+          maxItems: 10
+          type: array
+          items:
+            $ref: '#/components/schemas/Sample_Filter'
+        createdAt_eq:
+          type: string
+          format: date-time
+          nullable: true
+        createdAt_notEq:
+          type: string
+          format: date-time
+          nullable: true
+        createdAt_isNull:
+          type: boolean
+        createdAt_lt:
+          type: string
+          format: date-time
+        createdAt_lte:
+          type: string
+          format: date-time
+        createdAt_gt:
+          type: string
+          format: date-time
+        createdAt_gte:
+          type: string
+          format: date-time
+        createdAt_in:
+          type: array
+          items:
+            type: string
+            format: date-time
+        createdAt_notIn:
+          type: array
+          items:
+            type: string
+            format: date-time
+        birthDay_eq:
+          type: string
+          format: month-day
+          nullable: true
+        birthDay_notEq:
+          type: string
+          format: month-day
+          nullable: true
+        birthDay_isNull:
+          type: boolean
+        birthDay_lt:
+          type: string
+          format: month-day
+        birthDay_lte:
+          type: string
+          format: month-day
+        birthDay_gt:
+          type: string
+          format: month-day
+        birthDay_gte:
+          type: string
+          format: month-day
+        birthDay_in:
+          type: array
+          items:
+            type: string
+            format: month-day
+        birthDay_notIn:
+          type: array
+          items:
+            type: string
+            format: month-day
+        multipleSelect_contains:
+          type: integer
+          format: int32
+        multipleSelect_notContains:
+          type: integer
+          format: int32
+        multipleSelect_containsEvery:
+          type: array
+          items:
+            type: integer
+            format: int32
+        multipleSelect_containsSome:
+          type: array
+          items:
+            type: integer
+            format: int32
+        name_eq:
+          type: string
+          nullable: true
+        name_notEq:
+          type: string
+          nullable: true
+        name_isNull:
+          type: boolean
+        name_contains:
+          type: string
+        name_notContains:
+          type: string
+        name_startsWith:
+          type: string
+        name_notStartsWith:
+          type: string
+        name_endsWith:
+          type: string
+        name_notEndsWith:
+          type: string
+        name_lt:
+          type: string
+        name_lte:
+          type: string
+        name_gt:
+          type: string
+        name_gte:
+          type: string
+        name_in:
+          type: array
+          items:
+            type: string
+        name_notIn:
+          type: array
+          items:
+            type: string
+        mailAddress_eq:
+          type: string
+          nullable: true
+        mailAddress_notEq:
+          type: string
+          nullable: true
+        mailAddress_isNull:
+          type: boolean
+        mailAddress_contains:
+          type: string
+        mailAddress_notContains:
+          type: string
+        mailAddress_startsWith:
+          type: string
+        mailAddress_notStartsWith:
+          type: string
+        mailAddress_endsWith:
+          type: string
+        mailAddress_notEndsWith:
+          type: string
+        mailAddress_lt:
+          type: string
+        mailAddress_lte:
+          type: string
+        mailAddress_gt:
+          type: string
+        mailAddress_gte:
+          type: string
+        mailAddress_in:
+          type: array
+          items:
+            type: string
+        mailAddress_notIn:
+          type: array
+          items:
+            type: string
+        visitDate_eq:
+          type: string
+          format: date
+          nullable: true
+        visitDate_notEq:
+          type: string
+          format: date
+          nullable: true
+        visitDate_isNull:
+          type: boolean
+        visitDate_lt:
+          type: string
+          format: date
+        visitDate_lte:
+          type: string
+          format: date
+        visitDate_gt:
+          type: string
+          format: date
+        visitDate_gte:
+          type: string
+          format: date
+        visitDate_in:
+          type: array
+          items:
+            type: string
+            format: date
+        visitDate_notIn:
+          type: array
+          items:
+            type: string
+            format: date
+        id_eq:
+          type: integer
+          format: int32
+        id_notEq:
+          type: integer
+          format: int32
+        id_lt:
+          type: integer
+          format: int32
+        id_lte:
+          type: integer
+          format: int32
+        id_gt:
+          type: integer
+          format: int32
+        id_gte:
+          type: integer
+          format: int32
+        id_in:
+          type: array
+          items:
+            type: integer
+            format: int32
+        id_notIn:
+          type: array
+          items:
+            type: integer
+            format: int32
+        age_eq:
+          type: number
+          nullable: true
+        age_notEq:
+          type: number
+          nullable: true
+        age_isNull:
+          type: boolean
+        age_lt:
+          type: number
+        age_lte:
+          type: number
+        age_gt:
+          type: number
+        age_gte:
+          type: number
+        age_in:
+          type: array
+          items:
+            type: number
+        age_notIn:
+          type: array
+          items:
+            type: number
+        singleSelect_eq:
+          type: integer
+          format: int32
+          nullable: true
+        singleSelect_notEq:
+          type: integer
+          format: int32
+          nullable: true
+        singleSelect_isNull:
+          type: boolean
+        singleSelect_lt:
+          type: integer
+          format: int32
+        singleSelect_lte:
+          type: integer
+          format: int32
+        singleSelect_gt:
+          type: integer
+          format: int32
+        singleSelect_gte:
+          type: integer
+          format: int32
+        singleSelect_in:
+          type: array
+          items:
+            type: integer
+            format: int32
+        singleSelect_notIn:
+          type: array
+          items:
+            type: integer
+            format: int32
+      additionalProperties: false
+      nullable: true
+    Sample_QueryRequest:
+      type: object
+      properties:
+        filter:
+          $ref: '#/components/schemas/Sample_Filter'
+        order:
+          $ref: '#/components/schemas/Sample_Order'
+        limit:
+          type: integer
+          format: int32
+          nullable: true
+        offset:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+      description: 検索条件
+    Sample_QueryResponse:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            hasMore:
+              type: boolean
+        items:
+          type: array
+          description: 検索結果
+          items:
+            $ref: '#/components/schemas/Sample'
+    Sample_CountRequest:
+      type: object
+      properties:
+        filter:
+          $ref: '#/components/schemas/Sample_Filter'
+      additionalProperties: false
+      description: 検索条件
+    Sample_CountResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: 件数
+          format: int32
+    Sample_Order:
+      maxItems: 2
+      type: array
+      nullable: true
+      items:
+        type: string
+        enum:
+          - createdAt_asc
+          - createdAt_desc
+          - birthDay_asc
+          - birthDay_desc
+          - name_asc
+          - name_desc
+          - mailAddress_asc
+          - mailAddress_desc
+          - visitDate_asc
+          - visitDate_desc
+          - id_asc
+          - id_desc
+          - age_asc
+          - age_desc
+          - singleSelect_asc
+          - singleSelect_desc
+  parameters:
+    accountCode:
+      name: accountCode
+      in: path
+      description: アカウントコード
+      required: true
+      schema:
+        type: string
+        default: wead
+  securitySchemes:
+    oauth:
+      type: oauth2
+      description: Oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://auth-paas.dev-internal.crmstyle.com/oauth2/token'
+          refreshUrl: 'https://auth-paas.dev-internal.crmstyle.com/oauth2/token'
+          scopes:
+            'db:record:execute': RecordAPI全般実行
+    bearer:
+      type: http
+      scheme: bearer
