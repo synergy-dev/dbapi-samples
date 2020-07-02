@@ -19,10 +19,10 @@
 1. Syenrgy!データベースAPI.ApiDefinition.putApiDefinition から API を定義する。  
    ※サンプルでは sample-api-definition.yaml を使用して API を定義
 
-1. Syenrgy!データベースAPI.OpenApi.getOpneApi から定義された API の OpenAPI Document を取得する。  
+2. Syenrgy!データベースAPI.OpenApi.getOpneApi から定義された API の OpenAPI Document を取得する。  
    ※サンプルでは取得した OpenAPI Document を sample.yaml に保存
 
-1. ドキュメントルートで以下を実行する。
+3. ドキュメントルートで以下を実行する。
 ```
 docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
     -i /local/sample.yaml \
@@ -34,9 +34,9 @@ cd sample
 composer install
 ```
 
-1. ドキュメントルート に sample.php を設置する。
+4. ドキュメントルート に sample.php を設置する。
 
-1. Controller.class.php 上部のクライアント情報を書き換える。
+5. Controller.class.php 上部のクライアント情報を書き換える。
 ```php
   ##### クライアント情報 #################################################################
   $clientId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
@@ -45,5 +45,5 @@ composer install
   #######################################################################################
 ```
 
-1. 各ページにて値をセットし送信ボタンを押下  
+6. 各ページにて値をセットし送信ボタンを押下  
 
