@@ -4,8 +4,7 @@ info:
   description: sampleApi
   version: ckb69uof6000i01-20588697624xpal4dl
 servers:
-  - url: 'https://st-db.paas.crmstyle.com'
-    description: ステージング環境
+  - url: 'https://db.paas.crmstyle.com'
 security:
   - oauth:
       - 'db:record:execute'
@@ -533,7 +532,7 @@ components:
       required: true
       schema:
         type: string
-        default: wead
+        default: xxxx
   securitySchemes:
     oauth:
       type: oauth2
