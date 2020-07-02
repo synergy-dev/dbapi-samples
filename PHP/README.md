@@ -10,10 +10,10 @@
 | sample-application | データベースAPI を利用した CRUD アプリケーションです。              |
 
 ## 定義ファイル
-| ファイル名                 | 概要                                                                                 |
-| -------------------------- | ------------------------------------------------------------------------------------ |
-| sample-api-definition.yaml | Syenrgy!データベースAPI.ApiDefinition.putApiDefinition で投入した API を定義ファイル |
-| sample.yaml                | Syenrgy!データベースAPI.OpenApi.getOpneApi から取得した API 定義                     |
+| ファイル名                 | 概要                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------------ |
+| sample-api-definition.yaml | Syenrgy!データベースAPI.ApiDefinition.putApiDefinition で投入したサンプルのAPI定義ファイル |
+| sample.yaml                | sample-api-definition.yaml で定義したサンプル API の OpenAPI Document ファイル             |
 
 
 ## 権利・免責事項

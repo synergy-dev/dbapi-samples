@@ -1,9 +1,13 @@
 # Synergy!データベースAPI サンプルプログラム （PHP）
 
 ## サンプルコード実行手順
-1. API 定義 sample.yaml を用意する。
+1. Syenrgy!データベースAPI.ApiDefinition.putApiDefinition から API を定義する。  
+   ※サンプルでは sample-api-definition.yaml を使用して API を定義
 
-2. ドキュメントルートで以下を実行する。
+1. Syenrgy!データベースAPI.OpenApi.getOpneApi から定義された API の OpenAPI Document を取得する。  
+   ※サンプルでは取得した OpenAPI Document を sample.yaml に保存
+
+1. ドキュメントルートで以下を実行する。
 ```
 docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
     -i /local/sample.yaml \
@@ -15,9 +19,9 @@ cd sample
 composer install
 ```
 
-3. ドキュメントルート に sample.php を設置する。
+1. ドキュメントルート に sample.php を設置する。
 
-4. sample.php 上部のクライアント情報を書き換える。
+1. sample.php 上部のクライアント情報を書き換える。
 ```php
   ##### クライアント情報 #################################################################
   $clientId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
@@ -26,7 +30,7 @@ composer install
   #######################################################################################
 ```
 
-5. 実行すると sample.php 下部の以下のコードによって全登録件数が表示される。このコードを以下を参考に自由に書き換える。
+1. 実行すると sample.php 下部の以下のコードによって全登録件数が表示される。このコードを以下を参考に自由に書き換える。
 ```php
   ##### ここのコードを書き換える ##########################################################
 
