@@ -39,9 +39,9 @@ composer install
 5. Controller.class.php 上部のクライアント情報を書き換える。
 ```php
   ##### クライアント情報 #################################################################
-  $clientId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
-  $clientSecret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
-  $schema = 'xxxx';
+  const ACCOUNT_CODE = 'xxxx';
+  const CLIENT_ID = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+  const CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
   #######################################################################################
 ```
 

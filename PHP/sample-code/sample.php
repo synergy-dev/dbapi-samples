@@ -11,7 +11,7 @@
   ##### クライアント情報 #################################################################
   $clientId = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
   $clientSecret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
-  $schema = 'xxxx';
+  $accountCode = 'xxxx';
   #######################################################################################
 
   require_once './sample/vendor/autoload.php';
@@ -76,7 +76,7 @@
 
   $synergyId=294;
 
-  $result = $api->countSample($schema, new SampleCountRequest());
+  $result = $api->countSample($accountCode, new SampleCountRequest());
 
   echo $result.'<br>';
 
